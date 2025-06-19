@@ -1,6 +1,6 @@
 import sys
 
-full_name = "".join(sys.argv[1:])
+full_name = " ".join(sys.argv[1:])
 print(full_name)
 
 email = full_name.lower().replace(" ", ".") + "@company.com"

@@ -1,10 +1,10 @@
 amt = int(input("Enter the paper bill amount: "))
 if amt > 1000:
     disc = amt*0.1
-    t_amt = amt-disc
+    t_amt = amt-disc  # total_amount
 else:
     t_amt = amt
-gst = t_amt*0.18
+gst = t_amt*0.18  # applying gst
 
 
 def total():

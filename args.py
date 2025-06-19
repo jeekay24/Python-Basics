@@ -1,5 +1,5 @@
 """ #args
-def add(**args):
+def add(*args):
     total = 0
     for i in args:
         total += i

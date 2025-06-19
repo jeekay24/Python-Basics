@@ -1,18 +1,18 @@
-delivery_partner = "swiggy"
+delivery_partner = "swiggy"  # global-variable
 
 
 def restaurant():
-    order = "pizza"
+    order = "pizza"  # enclosed-variable
 
     def amount():
-        quantity = 2
+        quantity = 2  # local-variable
         print(
             f"I am going to order {quantity} {order} from {delivery_partner}")
     amount()
 
 
 def greet():
-    name = "ganesh"
+    name = "ganesh"  # local-variable
     print(f"hello i am {name}")
 
 
