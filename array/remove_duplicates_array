@@ -1,0 +1,35 @@
+# remove duplicates from sorted array
+
+class Solution:
+    def removeDuplicates(self, nums: list[int]) -> int:
+        if not nums:
+            return 0
+
+        write = 1  # pointer to place the next unique number
+
+        for read in range(1, len(nums)):
+            if nums[read] != nums[read - 1]:
+                nums[write] = nums[read]
+                write += 1
+
+        return write
+
+
+# Input: nums = [0, 0, 1, 1, 2]
+# Step 1
+# read=1; write=1 => nums[read]=nums[1]=0 & nums[read-1]=nums[0]=0
+# since nums[read]==nums[read-1] there is no write performed
+
+# Step 2
+# read=2; write=1 => nums[read]=nums[2]=1 & nums[read-1]=nums[1]=0
+# since nums[read]!=nums[read-1] => nums[write]=1 & write=2
+
+# Step 3
+# read=3; write=2 => nums[read]=nums[3]=1 & nums[read-1]=nums[2]=1
+# since nums[read]==nums[write] there is nowrite performed here
+
+# Step 4
+# read=4; write=2 => nums[read]=nums[4]=2 & nums[read-1]=nums[3]=1
+# since nums[read]!=nums[read-1] => nums[write]=2 & write = 3
+
+# then since len(nums) == 4 loop exits
