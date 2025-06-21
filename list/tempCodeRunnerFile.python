@@ -1,0 +1,2 @@
+recent_playlist.pop()
+# print(recent_playlist)

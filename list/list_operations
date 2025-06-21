@@ -1,0 +1,47 @@
+
+recent_playlist = ["mutha mazhai", "vetrivel",
+                   "oh maara", "mannipaya", "aaromale"]
+print("fav songs:", recent_playlist)
+
+""" #fetch both index and name 
+for i, song in enumerate(recent_playlist):
+    print(f"Songs {i}:{song}")
+"""
+
+# list methods
+
+# recent_playlist.append("oh manapenne")
+# print("fav songs:", recent_playlist)
+
+# recent_playlist.insert(2, "kodi theme")
+# print("fav songs:", recent_playlist)
+
+# recent_playlist.remove("oh maara")
+# print("fav songs:", recent_playlist)
+
+# recent_playlist.reverse()
+# print("fav songs in reverse order:", recent_playlist)
+
+# count = recent_playlist.count("aaromale")
+# print(count)
+
+# recent_playlist.pop()
+# print(recent_playlist)
+
+# recent_playlist.pop(2)
+# print(recent_playlist)
+
+
+""" #list slicing
+first_two_songs = recent_playlist[0:2]
+print("first two songs:", ", " .join(first_two_songs))
+print("first two songs:", *recent_playlist[0:2])
+"""
+
+""" #list iteration
+for songs in recent_playlist:
+    print(songs)
+
+for songs in recent_playlist:
+    print(songs + " is my favourite")
+"""
