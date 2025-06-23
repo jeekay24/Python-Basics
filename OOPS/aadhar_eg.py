@@ -10,6 +10,6 @@ class Employee:
         print(f"Hi {self.name}, please provide your aadhar number: {self.ano}")
 
 
-emp = Employee("Ganesh Kumar", "2174-2127-2433")
-emp.bank_details()
-emp.office_details()
+e = Employee("Ganesh Kumar", "2174-2127-2433")
+e.bank_details()
+e.office_details()
