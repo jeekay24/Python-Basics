@@ -25,7 +25,7 @@ class Child(Parent):
             print("It is private;you cannot access it")
 
 
-class Stranger():
+class Stranger:
     def access_from_another_class(self, obj):
         obj.public_method()
         obj._protected_method()

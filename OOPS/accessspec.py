@@ -45,7 +45,7 @@ class Child(Parent):
             print("It is private: you cannot access it")
 
 
-class Stranger():
+class Stranger:
     def access_from_some_other_class(self, obj):
         print("In other class:")
         print("Public:", obj.pub_var)
