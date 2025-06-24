@@ -39,7 +39,8 @@ class Child(Parent):
         # not recommended since its name-mangling
         print("Protected:", self._prot_var)
         try:
-            print("Private:", self.__priv_var)
+            # accessing private variable from child class is name mangling and it is not a good practice in python
+            print("Private:", self._Parent__priv_var)
         except AttributeError:
             print("It is private: you cannot access it")
 
