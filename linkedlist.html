@@ -1,0 +1,480 @@
+<!DOCTYPE html >
+<html lang = "en" >
+<head >
+    <meta charset = "UTF-8" >
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0" >
+    <title > Linked List Explanation < /title >
+    <style >
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg,  # 667eea 0%, #764ba2 100%);
+            color:  # 333;
+            line-height: 1.6;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color:  # 4a5568;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .step {
+            margin: 40px 0;
+            padding: 25px;
+            border: 2px solid  # e2e8f0;
+            border-radius: 12px;
+            background: linear-gradient(145deg,  # f8fafc, #f1f5f9);
+            transition: all 0.3s ease;
+        }
+
+        .step: hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color:  # 2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .step-number {
+            background:  # 4299e1;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50 %;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background:  # 2d3748;
+            color:  # e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .node {
+            display: flex;
+            border: 3px solid  # 4299e1;
+            border-radius: 8px;
+            background: white;
+            min-width: 120px;
+            animation: fadeIn 0.6s ease-in ;
+        }
+
+        .data-part {
+            padding: 15px 20px;
+            background:  # 4299e1;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .next-part {
+            padding: 15px 20px;
+            background:  # 68d391;
+            color: white;
+            font-weight: bold;
+            border-left: 2px solid  # 38a169;
+        }
+
+        .arrow {
+            font-size: 2em;
+            color:  # e53e3e;
+            margin: 0 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .null-box {
+            padding: 15px 20px;
+            background:  # fc8181;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            border: 3px solid  # e53e3e;
+        }
+
+        .highlight {
+            background:  # fef5e7 !important;
+            border-color:  # f6ad55 !important;
+        }
+
+        .current-pointer {
+            background:  # purple;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+            display: inline-block;
+            animation: bounce 1s infinite;
+        }
+
+        @ keyframes fadeIn {
+            from {opacity: 0; transform: translateX(-20px); }
+            to {opacity: 1; transform: translateX(0); }
+        }
+
+        @ keyframes pulse {
+            0%, 100 % {transform: scale(1);}
+            50 % {transform: scale(1.1);}
+        }
+
+        @ keyframes bounce {
+            0%, 20%, 50%, 80%, 100 % {transform: translateY(0);}
+            40 % {transform: translateY(-10px);}
+            60 % {transform: translateY(-5px);}
+        }
+
+        .explanation {
+            background:  # edf2f7;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid  # 4299e1;
+        }
+
+        @ media(max-width: 768px) {
+            .diagram {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .node {
+                margin: 10px 0;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+                margin: 10px 0;
+            }
+        }
+    < /style >
+< / head >
+< body >
+    < div class= "container" >
+        < h1 >🔗 Linked List: Step-by-Step Explanation < /h1 >
+
+        < div class= "step" >
+            < div class= "step-title" >
+                < div class= "step-number" > 1 < /div >
+                Understanding the Node Class
+            < /div >
+            < div class= "code-block" >
+class Node:
+    def __init__(self, data):
+        self.data= data
+        self.next= None
+            < /div >
+            < div class= "explanation" >
+                < strong > What this does: < /strong > Creates a blueprint for a "node" - think of it like a train car that can hold data and point to the next car.
+                < br > <br >
+                Each node has:
+                < ul >
+                    < li > <code > data < /code >: The actual value stored (like 1, 2, 3) < /li >
+                    < li > <code > next < /code >: A pointer to the next node (starts as None) < /li >
+                < / ul >
+            < / div >
+
+            < div class= "diagram" >
+                < div class= "node" >
+                    < div class= "data-part" > DATA < /div >
+                    < div class= "next-part" > NEXT < /div >
+                < / div >
+            < / div >
+        < / div >
+
+        < div class= "step" >
+            < div class= "step-title" >
+                < div class= "step-number" > 2 < /div >
+                Creating the First Node
+            < /div >
+            < div class= "code-block" >
+head= Node(1)
+            < /div >
+            < div class= "explanation" >
+                < strong > What happens: < /strong > We create the first node with data= 1. The 'head' variable points to this node.
+            < /div >
+
+            < div class= "diagram" >
+                < div style= "text-align: center; margin-bottom: 10px;" >
+                    < div class = "current-pointer" > head →< /div >
+                < / div >
+                < div class= "node" >
+                    < div class= "data-part" > 1 < /div >
+                    < div class= "next-part" > None < /div >
+                < / div >
+            < / div >
+        < / div >
+
+        < div class= "step" >
+            < div class= "step-title" >
+                < div class= "step-number" > 3 < /div >
+                Adding the Second Node
+            < /div >
+            < div class= "code-block" >
+head.next= Node(2)
+            < /div >
+            < div class= "explanation" >
+                < strong > What happens: < /strong > We create a second node with data= 2, and make the first node point to it.
+            < /div >
+
+            < div class= "diagram" >
+                < div style= "text-align: center; margin-bottom: 10px;" >
+                    < div class = "current-pointer" > head →< /div >
+                < / div >
+                < div class= "node" >
+                    < div class= "data-part" > 1 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node" >
+                    < div class= "data-part" > 2 < /div >
+                    < div class= "next-part" > None < /div >
+                < / div >
+            < / div >
+        < / div >
+
+        < div class= "step" >
+            < div class= "step-title" >
+                < div class= "step-number" > 4 < /div >
+                Adding the Third Node
+            < /div >
+            < div class= "code-block" >
+head.next.next= Node(3)
+            < /div >
+            < div class= "explanation" >
+                < strong > What happens: < /strong > We create a third node with data= 3, and make the second node point to it.
+                < br > <code > head.next.next < /code > means: "Go to head, then to its next node, then to that node's next pointer"
+            < /div >
+
+            < div class= "diagram" >
+                < div style= "text-align: center; margin-bottom: 10px;" >
+                    < div class = "current-pointer" > head →< /div >
+                < / div >
+                < div class= "node" >
+                    < div class= "data-part" > 1 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node" >
+                    < div class= "data-part" > 2 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node" >
+                    < div class= "data-part" > 3 < /div >
+                    < div class= "next-part" > None < /div >
+                < / div >
+            < / div >
+        < / div >
+
+        < div class= "step" >
+            < div class= "step-title" >
+                < div class= "step-number" > 5 < /div >
+                Traversing the List - Setup
+            < /div >
+            < div class= "code-block" >
+current= head
+            < /div >
+            < div class= "explanation" >
+                < strong > What happens: < /strong > We create a 'current' pointer that starts at the head. This is our "walking pointer" that will visit each node.
+            < /div >
+
+            < div class= "diagram" >
+                < div style= "text-align: center; margin-bottom: 10px;" >
+                    < div class = "current-pointer" > head → current →< /div >
+                < / div >
+                < div class= "node highlight" >
+                    < div class= "data-part" > 1 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node" >
+                    < div class= "data-part" > 2 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node" >
+                    < div class= "data-part" > 3 < /div >
+                    < div class= "next-part" > None < /div >
+                < / div >
+            < / div >
+        < / div >
+
+        < div class= "step" >
+            < div class= "step-title" >
+                < div class= "step-number" > 6 < /div >
+                Traversing - First Iteration
+            < /div >
+            < div class= "code-block" >
+while current:           # current points to node with data=1
+    print(current.data)  # prints: 1
+    current= current.next  # move to next node
+            < /div >
+            < div class= "explanation" >
+                < strong > What happens: < /strong > Print the data(1), then move current to point to the next node.
+            < /div >
+
+            < div class= "diagram" >
+                < div style= "text-align: center; margin-bottom: 10px;" >
+                    < div class = "current-pointer" > current →< /div >
+                < / div >
+                < div class= "node" >
+                    < div class= "data-part" > 1 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node highlight" >
+                    < div class= "data-part" > 2 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node" >
+                    < div class= "data-part" > 3 < /div >
+                    < div class= "next-part" > None < /div >
+                < / div >
+                < div style= "text-align: center; margin-top: 15px; font-weight: bold; color: #e53e3e;" >
+                    Output: 1
+                < /div >
+            < / div >
+        < / div >
+
+        < div class= "step" >
+            < div class= "step-title" >
+                < div class= "step-number" > 7 < /div >
+                Traversing - Second Iteration
+            < /div >
+            < div class= "code-block" >
+while current:           # current points to node with data=2
+    print(current.data)  # prints: 2
+    current= current.next  # move to next node
+            < /div >
+            < div class= "explanation" >
+                < strong > What happens: < /strong > Print the data(2), then move current to point to the next node.
+            < /div >
+
+            < div class= "diagram" >
+                < div style= "text-align: center; margin-bottom: 10px;" >
+                    < div class = "current-pointer" > current →< /div >
+                < / div >
+                < div class= "node" >
+                    < div class= "data-part" > 1 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node" >
+                    < div class= "data-part" > 2 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node highlight" >
+                    < div class= "data-part" > 3 < /div >
+                    < div class= "next-part" > None < /div >
+                < / div >
+                < div style= "text-align: center; margin-top: 15px; font-weight: bold; color: #e53e3e;" >
+                    Output: 1, 2
+                < /div >
+            < / div >
+        < / div >
+
+        < div class= "step" >
+            < div class= "step-title" >
+                < div class= "step-number" > 8 < /div >
+                Traversing - Third Iteration
+            < /div >
+            < div class= "code-block" >
+while current:           # current points to node with data=3
+    print(current.data)  # prints: 3
+    current= current.next  # current becomes None
+            < /div >
+            < div class= "explanation" >
+                < strong > What happens: < /strong > Print the data(3), then move current to None (since the last node's next is None).
+            < /div >
+
+            < div class= "diagram" >
+                < div style= "text-align: center; margin-bottom: 10px;" >
+                    < div class = "current-pointer" > current →< /div >
+                < / div >
+                < div class= "node" >
+                    < div class= "data-part" > 1 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node" >
+                    < div class= "data-part" > 2 < /div >
+                    < div class = "next-part" >→</div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "node" >
+                    < div class= "data-part" > 3 < /div >
+                    < div class= "next-part" > None < /div >
+                < / div >
+                < div class = "arrow" >→</div >
+                < div class= "null-box" > None < /div >
+                < div style= "text-align: center; margin-top: 15px; font-weight: bold; color: #e53e3e;" >
+                    Output: 1, 2, 3
+                < /div >
+            < / div >
+        < / div >
+
+        < div class= "step" >
+            < div class= "step-title" >
+                < div class= "step-number" > 9 < /div >
+                Loop Ends
+            < /div >
+            < div class= "code-block" >
+while current:  # current is None, so condition is False
+    # This block won't execute
+            < /div >
+            < div class= "explanation" >
+                < strong > What happens: < /strong > Since current is now None, the while loop condition becomes False and the loop stops.
+                < br > <br >
+                < strong > Final Result: < /strong > We've successfully printed all values: 1, 2, 3
+            < /div >
+        < / div >
+
+        < div style= "background: #e6fffa; padding: 25px; border-radius: 12px; margin-top: 40px; border: 2px solid #38b2ac;" >
+            < h3 style = "color: #2c7a7b; margin-bottom: 15px;" >🎯 Key Concepts Summary: < /h3 >
+            < ul style= "color: #2c7a7b;" >
+                < li > <strong > Node: < /strong > A container that holds data and a reference to the next node < /li >
+                < li > <strong > Head: < /strong > Points to the first node in the list < /li >
+                < li > <strong > Next: < /strong > Each node points to the next node (or None if it's the last) < /li >
+                < li > <strong > Traversal: < /strong > Walking through the list using a "current" pointer < /li >
+                < li > <strong > None: < /strong > Signals the end of the list < /li >
+            < / ul >
+        < / div >
+    < / div >
+< / body >
+< / html >
